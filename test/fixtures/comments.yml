@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyText
+  post_date: 2023-04-24 23:57:26
+  description: MyText
+  user_id: one
+  movie_id: one
+
+two:
+  status: MyText
+  post_date: 2023-04-24 23:57:26
+  description: MyText
+  user_id: two
+  movie_id: two
