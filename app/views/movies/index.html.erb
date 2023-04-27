@@ -1,0 +1,21 @@
+<h1>New Film</h1>
+<%= render 'movies/form', movie: @movie %>
+
+<h1>Film list</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Year</th>
+    <th>Open</th>
+  </tr>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td> <%= movie.id %> </td>
+      <td> <%= movie.name %> </td>
+      <td> <%= movie.year %> </td>
+      <td> <%= link_to('Open', movie_path(movie)) %> </td>
+    </tr>
+  <% end %>
+</table>
