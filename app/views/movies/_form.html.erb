@@ -1,13 +1,13 @@
 <%= form_with model: @movie do |form| %>
     <%= form.label :name, "Film name" %>
     <%= form.text_field :name %>
-    <%= form.label :name, "Director name" %>
+    <%= form.label :director, "Director name" %>
     <%= form.text_field :director %>
-    <%= form.label :name, "Release date" %>
+    <%= form.label :year, "Release date" %>
     <%= form.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
-    <%= form.label :name, "Duration (min)" %>
+    <%= form.label :duration, "Duration (min)" %>
     <%= form.text_field :duration, data: { numeric: true } %>
-    <%= form.label :name, "Description" %>
+    <%= form.label :description, "Description" %>
     <%= form.text_field :description %>
     <%= form.submit "New film" %>
 <% end %>
