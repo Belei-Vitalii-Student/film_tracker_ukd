@@ -19,3 +19,29 @@ movies = Movie.create([
     { name: "Forrest Gump", director: "Robert Zemeckis", year: 1994, duration: 142, description: "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75." },
     { name: "Inception", director: "Christopher Nolan", year: 2010, duration: 148, description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O." },
 ])
+
+stars = Star.create([
+    { name: "Morgan Freeman", age: 84, birthday: Date.new(1937, 6, 1) },
+    { name: "Tim Robbins", age: 63, birthday: Date.new(1958, 10, 16) },
+    { name: "Marlon Brando", age: 80, birthday: Date.new(1924, 4, 3) },
+    { name: "Al Pacino", age: 81, birthday: Date.new(1940, 4, 25) },
+    { name: "Robert De Niro", age: 78, birthday: Date.new(1943, 8, 17) },
+    { name: "Christian Bale", age: 47, birthday: Date.new(1974, 1, 30) },
+    { name: "Liam Neeson", age: 69, birthday: Date.new(1952, 6, 7) },
+    { name: "John Travolta", age: 67, birthday: Date.new(1954, 2, 18) },
+    { name: "Tom Hanks", age: 65, birthday: Date.new(1956, 7, 9) },
+    { name: "Leonardo DiCaprio", age: 47, birthday: Date.new(1974, 11, 11) }
+])
+
+categories = Category.create([
+    { name: "Action" },
+    { name: "Comedy" },
+    { name: "Drama" },
+    { name: "Horror" },
+    { name: "Romance" },
+    { name: "Sci-Fi" },
+    { name: "Thriller" },
+    { name: "Documentary" },
+    { name: "Animation" },
+    { name: "Adventure" }
+])

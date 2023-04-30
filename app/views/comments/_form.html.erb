@@ -1,0 +1,20 @@
+<label for="form-btn", class="show-form-label btn btn-primary">Add comment</label>
+<input id="form-btn" hidden type="checkbox" class="show-form-btn" />
+<%= form_with model: Comment.new, url: comments_path, method: :post, class: "comment-form d-flex flex-column justify-content-evenly gap-1 p-5 pt-0 card" do |form| %>
+    <%= form.hidden_field :movie_id, :value => @movie.id %>
+    <div class="d-flex fs-2">
+        <span>
+            <%= form.radio_button :status, 'like' %>
+            <%= form.label :status, '👍', :value => 'like' %>
+        </span>
+        <span>
+            <%= form.radio_button :status, 'dislike' %>
+            <%= form.label :status, '👎', :value => 'dislike' %>
+        </span>
+    </div>
+
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description, class: "description", required: true %>
+
+    <%= form.submit "New comment", class: "btn btn-primary" %>
+<% end %>

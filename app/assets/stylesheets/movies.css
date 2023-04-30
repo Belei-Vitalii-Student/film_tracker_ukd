@@ -1,0 +1,40 @@
+.movies-container {
+
+}
+
+.card {
+    width: 30%;
+    height: 250px;
+}
+
+.mv-name {
+    height: 100px;
+}
+
+.mv-link {
+    text-decoration: none;
+    color: #1F1F1F;
+    transition: .2s;
+}
+
+.mv-link:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 .5rem 1rem rgba(black, .15);;
+    transition: .2s;
+}
+
+.mv-link:hover .mv-name {
+    background-color: #464646 !important;
+    color: white;
+    transition: .2s;
+    height: fit-content;
+}
+
+.star-info {
+    padding: 4px 8px;
+    margin-right: 3px;
+    background-color: #5f5f5f;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+}

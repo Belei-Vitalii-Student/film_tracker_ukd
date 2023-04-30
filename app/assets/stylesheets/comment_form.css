@@ -1,0 +1,44 @@
+.show-form-label {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.show-form-btn:checked ~ .comment-form {
+    display: flex !important;
+}
+
+.comment-form {
+    position: fixed;
+    display: none !important;
+    z-index: 10;
+    width: 400px !important;
+    height: fit-content;
+    bottom: 60px;
+    right: 10px;
+    padding: 10px !important;
+}
+
+.comment-form .description {
+    height: fit-content;
+    min-height: 50%;
+    text-align: start !important;
+}
+
+.comment-form span label {
+    transition: .2s;
+}
+
+.comment-form span label:hover {
+    transform: translateY(-5px);
+}
+
+.comment-form span input[type="radio"]:checked + label {
+    background-color: lightblue;
+    border-radius: 10px;
+    transition: .2s;
+}
+
+.comment-form span input[type="radio"] {
+    display: none;
+}

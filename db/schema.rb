@@ -29,7 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_212850) do
 
   create_table "comments", force: :cascade do |t|
     t.text "status"
-    t.datetime "post_date"
     t.text "description"
     t.bigint "user_id", null: false
     t.bigint "movie_id", null: false

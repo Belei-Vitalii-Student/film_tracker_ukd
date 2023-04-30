@@ -1,0 +1,21 @@
+.comment-el {
+    min-height: 250px !important;
+    overflow: hidden;
+}
+
+.comment-el:hover {
+    overflow: visible;
+    height: fit-content !important;
+}
+
+.like {
+    background-color: lightgreen;
+}
+
+.dislike {
+    background-color: coral;
+}
+
+.comment-date {
+    font-size: 10pt;
+}

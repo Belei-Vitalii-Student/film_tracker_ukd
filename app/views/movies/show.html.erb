@@ -1,6 +1,45 @@
-<h1>Film data</h1>
-<h2><b><%= @movie.name %></b></h2>
-<h4><%= @movie.director %></h4>
-<span><%= @movie.year %></span>
-<hr/>
-<span><%= @movie.description %></span>
+<div class="container mt-5 mb-5">
+    <div class="film-info d-flex flex-row gap-3">
+        <div class="d-flex flex-column">
+            <img class="poster bg-light" src="" alt="Image" />
+            <div class="mv-short-info d-flex flex-row justify-content-between mt-2">
+                <h6><%= @movie.year %></h6>
+                <h6>🎬<%= @movie.director %></h6>
+            </div>
+        </div>
+        <div class="mv-main-info flex-fill">
+            <h2 class="mb-4"><b><%= @movie.name %></b></h2>
+            <span><%= @movie.description %></span>
+            <div class="mt-5">
+                <h4>⭐Stars:</h4>
+                <div class="d-flex flex-row flex-wrap gap-1">
+                    <% @movie.stars.each do |star| %>
+                        <span class="star-info" title='<%= "Age: #{star.age}\nBirthday: #{star.birthday.strftime('%Y-%m-%d')}" %>'><%= star.name %></span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="mv-footer d-flex flex-row justify-content-between align-items-end mb-1">
+                <div class="mv-categories flex-fill">
+                    <div class="d-flex flex-row flex-wrap">
+                        <% if @movie.categories.size != 0 %>
+                            <% @movie.categories.each do |category| %><span class="mv-category"><%= category.name %></span><% end %>
+                        <% else %>
+                            <span class="mv-no-category">No categories here yet</span>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="mv-duration">🕒<%= @movie.duration %> min.</div>
+            </div>
+        </div>
+    </div>
+    <hr class="border bg-secondary border-2"/>
+    <div class="comments mt-5">
+        <h3 class="text-center">Comments</h3>
+        <%= render 'comments/form' %>
+        <div class="mb-3 d-flex flex-row gap-5 flex-wrap justify-content-center">
+            <% @movie.comments.each do |comment| %>
+                <%= render 'comments/comment', comment: comment %>
+            <% end %>
+        </div>
+    </div>
+</div>

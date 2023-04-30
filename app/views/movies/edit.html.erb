@@ -1,0 +1,57 @@
+<div class="container mt-5">
+    <h1 class="text-center">Edit Film</h1>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="current-data d-flex flex-column justify-content-center">
+            <h2 class="text-center">Current data</h2>
+            <div class="flex-fill">
+                <div><span>Film name: </span><b><%= @movie.name %></b></div>
+                <div><span>Director name: </span><b><%= @movie.director %></b></div>
+                <div><span>Release year: </span><b><%= @movie.year %></b></div>
+                <div><span>Duration(min): </span><b><%= @movie.duration %></b></div>
+                <div><span>Stars: </span>
+                    <% if @movie.stars.size == 0 %>
+                        <span><b><code>No data</code></b></span>
+                        <% else @movie.stars.each do |star| %>
+                            <span><b><%= star.name %>,</b></span>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div><span>Categories: </span>
+                    <% if @movie.categories.size == 0 %>
+                        <span><b><code>No data</code></b></span>
+                        <% else @movie.categories.each do |star| %>
+                            <span><b><%= star.name %>,</b></span>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div>Description: <b><%= @movie.description %></b></div>
+            </div>
+        </div>
+        <div class="new-data d-flex flex-column justify-content-center">
+            <h2 class="text-center">New data</h2>
+            <%= form_with model: @movie, url: movie_path(@movie), method: :patch, class: "d-flex flex-column justify-content-evenly gap-1 p-5 pt-0" do |form| %>
+                <%= form.label :name, "Film name" %>
+                <%= form.text_field :name, value: @movie.name, required: true %>
+                
+                <%= form.label :director, "Director name" %>
+                <%= form.text_field :director, value: @movie.director, required: true %>
+
+                <%= form.label :year, "Year" %>
+                <%= form.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), { selected: @movie.year }, required: true %>
+
+                <%= form.label :duration, "Duration (min)" %>
+                <%= form.text_field :duration, data: { numeric: true }, value: @movie.duration, required: true %>
+
+                <%= form.label :stars, "Stars" %>
+                <%= form.collection_select :star_ids, Star.all, :id, :name, { selected: @movie.star_ids }, { multiple: true } %>
+
+                <%= form.label :stars, "Categories" %>
+                <%= form.collection_select :category_ids, Category.all, :id, :name, { selected: @movie.category_ids }, { multiple: true} %>
+
+                <%= form.label :description, "Description" %>
+                <%= form.text_area :description, value: @movie.description, required: true %>
+                <%= form.submit "Edit", class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,16 @@
-<h1>New Film</h1>
-<%= render 'movies/form', movie: @movie %>
+<div class="container mt-5 mb-5">
+  <h1 class="text-center">Film list</h1>
 
-<h1>Film list</h1>
+  <div class="movies-container d-flex flex-wrap gap-3 justify-content-center">
+    <% @movies.each do |movie| %>
+      <a class="card mv-link" href="<%= movie_path(movie) %>">
+          <h3 class="mv-name card-img-top p-3 flex-fill bg-light bg-gradient"><%= movie.name %></h3>
+          <div class="card-body flex-fill">
+            <h4 class="card-title"><%= movie.year %></h4>
+            <span class="card-text"><%= movie.description.truncate(100) %></span>
+          </div>
+      </a>
+    <% end %>
+  </div>
 
-<table class="table table-striped">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Year</th>
-    <th>Open</th>
-  </tr>
-  <% @movies.each do |movie| %>
-    <tr>
-      <td> <%= movie.id %> </td>
-      <td> <%= movie.name %> </td>
-      <td> <%= movie.year %> </td>
-      <td> <%= link_to('Open', movie_path(movie)) %> </td>
-    </tr>
-  <% end %>
-</table>
+</div>

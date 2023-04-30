@@ -1,13 +1,23 @@
-<%= form_with model: @movie do |form| %>
+<%= form_with model: Movie.new, url: movies_path, method: :post, class: "d-flex flex-column justify-content-evenly gap-1 p-5 pt-0" do |form| %>
     <%= form.label :name, "Film name" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
+    
     <%= form.label :director, "Director name" %>
-    <%= form.text_field :director %>
+    <%= form.text_field :director, required: true %>
+
     <%= form.label :year, "Release date" %>
-    <%= form.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
+    <%= form.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), required: true %>
+
     <%= form.label :duration, "Duration (min)" %>
-    <%= form.text_field :duration, data: { numeric: true } %>
+    <%= form.text_field :duration, data: { numeric: true }, required: true %>
+
+    <%= form.label :stars, "Stars" %>
+    <%= form.collection_select :star_ids, Star.all, :id, :name, {}, { multiple: true } %>
+
+    <%= form.label :stars, "Categories" %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
+
     <%= form.label :description, "Description" %>
-    <%= form.text_field :description %>
-    <%= form.submit "New film" %>
+    <%= form.text_area :description, required: true %>
+    <%= form.submit "New film", class: "btn btn-success" %>
 <% end %>
