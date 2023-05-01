@@ -1,6 +1,10 @@
 class MoviesController < ApplicationController
     def index
-        @movies = Movie.all
+        if params[:name] 
+            @movies = Movie.search_by_name(params[:name].downcase)
+        else
+            @movies = Movie.all
+        end
     end
 
     def create

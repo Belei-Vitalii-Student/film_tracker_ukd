@@ -1,7 +1,15 @@
+<% 
+
+    require 'open-uri'
+    api_key = Rails.application.credentials.omdb_api_key
+    response = URI.open("http://www.omdbapi.com/?t=#{@movie.name.gsub(' ', '+')}&apikey=#{api_key}")
+    json_response = JSON.parse(response.read)
+
+%>
 <div class="container mt-5 mb-5">
     <div class="film-info d-flex flex-row gap-3">
         <div class="d-flex flex-column">
-            <img class="poster bg-light" src="" alt="Image" />
+            <img class="poster bg-light" src="<%= json_response["Poster"] %>" alt="Image" />
             <div class="mv-short-info d-flex flex-row justify-content-between mt-2">
                 <h6><%= @movie.year %></h6>
                 <h6>🎬<%= @movie.director %></h6>

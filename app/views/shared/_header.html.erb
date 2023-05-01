@@ -3,10 +3,10 @@
     <a class="navbar-brand fs-6 fw-semibold" href="/">
       Film🍿<br/>Tracker
     </a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <%= form_tag movies_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :name, params[:name], placeholder: "Enter movie name", class: "form-control me-2" %>
+      <%= submit_tag "Search", class: "btn btn-outline-success" %>
+    <% end %>
     <ul class="navbar-nav">
       <% if @movie %>
         <li class="nav-item">
