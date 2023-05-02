@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <h1 class="text-center">Edit Comment</h1>
+    <div class="d-flex flex-row justify-content-center">
+        <div class="current-data d-flex flex-column justify-content-center align-items-center">
+            <h2 class="text-center">Current data</h2>
+            <div class="comment-el edit card">
+                <div class="d-flex flex-row justify-content-between align-items-center card-header <%= @comment.status %>">
+                    <div>
+                    <% if @comment.status && @comment.status == 'like' %>
+                        <span>👍</span>
+                    <% elsif @comment.status && @comment.status == 'dislike' %>
+                        <span>👎</span>
+                    <% end %>
+                    <span><%= @comment.user.email %></span>
+                    </div>
+                    <div class="comment-date">
+                    <%= @comment.updated_at.strftime('%Y-%m-%d %H:%M') %>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                    <p><%= @comment.description %></p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="new-data d-flex flex-column justify-content-center align-items-center">
+            <h2 class="text-center">New data</h2>
+            <%= form_with model: @comment, url: comment_path(@comment.id), method: :patch, class: "comment-edit-form d-flex flex-column justify-content-evenly gap-1 p-5 pt-0 card" do |form| %>
+                <%= form.hidden_field :movie_id, :value => @movie.id %>
+                <div class="d-flex fs-2">
+                    <span>
+                        <%= form.radio_button :status, 'like' %>
+                        <%= form.label :status, '👍', :value => 'like' %>
+                    </span>
+                    <span>
+                        <%= form.radio_button :status, 'dislike' %>
+                        <%= form.label :status, '👎', :value => 'dislike' %>
+                    </span>
+                </div>
+
+                <%= form.label :description, "Description" %>
+                <%= form.text_area :description, class: "description", required: true %>
+
+                <%= form.submit "Edit", class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

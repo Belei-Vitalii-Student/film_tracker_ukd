@@ -1,0 +1,37 @@
+.comment-el.edit {
+    min-height: 250px !important;
+    width: 400px;
+    overflow: hidden;
+}
+
+.comment-edit-form {
+    position: relative;
+    display: flex;
+    width: 400px !important;
+    height: fit-content;
+    padding: 10px !important;
+}
+
+.comment-edit-form .description {
+    height: fit-content;
+    min-height: 50%;
+    text-align: start !important;
+}
+
+.comment-edit-form span label {
+    transition: .2s;
+}
+
+.comment-edit-form span label:hover {
+    transform: translateY(-5px);
+}
+
+.comment-edit-form span input[type="radio"]:checked + label {
+    background-color: lightblue;
+    border-radius: 10px;
+    transition: .2s;
+}
+
+.comment-edit-form span input[type="radio"] {
+    display: none;
+}

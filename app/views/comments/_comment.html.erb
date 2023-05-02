@@ -17,4 +17,17 @@
       <p><%= comment.description %></p>
     </blockquote>
   </div>
+  <div class="comment-options d-flex flex-row gap-2">
+    <%= form_with model: comment, url: edit_comment_path(comment), method: :get do |form| %>
+      <%= form.hidden_field :movie_id, :value => comment.movie.id %>
+      <%= form.submit '🖋️', class: 'comment-edit btn btn-info' %>
+    <% end %>
+
+    <%# <%= link_to '🖋️', edit_comment_path(comment), id: 'edit-film', class: 'comment-edit btn btn-info' %>
+
+    <%= form_with model: comment, url: comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } do |form| %>
+      <%= form.hidden_field :movie_id, :value => comment.movie.id %>
+      <%= form.submit '🗑️', class: 'comment-delete btn btn-danger' %>
+    <% end %>
+  </div>
 </div>

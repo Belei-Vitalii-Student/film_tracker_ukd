@@ -1,5 +1,5 @@
 .comment-el {
-    min-height: 250px !important;
+    min-height: 250px;
     overflow: hidden;
 }
 
@@ -18,4 +18,35 @@
 
 .comment-date {
     font-size: 10pt;
+}
+
+.comment-options {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 6px !important;
+    opacity: 0;
+    transition: .2s;
+}
+
+.comment-el:hover .comment-options {
+    opacity: .3;
+}
+
+.comment-options:hover {
+    opacity: 1 !important;
+    transition: .2s;
+}
+
+.comment-edit, .comment-delete {
+    opacity: .5;
+    padding: 3px;
+}
+
+.comment-edit:hover {
+    opacity: 1;
+}
+
+.comment-delete:hover {
+    opacity: 1;
 }
